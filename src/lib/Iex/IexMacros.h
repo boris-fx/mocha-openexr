@@ -26,12 +26,14 @@
 #include "IexExport.h"
 #include "IexForward.h"
 
+IEX_INTERNAL_NAMESPACE_SOURCE_ENTER
 IEX_EXPORT void iex_debugTrap ();
+IEX_INTERNAL_NAMESPACE_SOURCE_EXIT
 
 #define THROW(type, text)                                                      \
     do                                                                         \
     {                                                                          \
-        iex_debugTrap ();                                                      \
+        IEX_INTERNAL_NAMESPACE::iex_debugTrap ();                              \
         std::stringstream _iex_throw_s;                                        \
         _iex_throw_s << text;                                                  \
         throw type (_iex_throw_s);                                             \

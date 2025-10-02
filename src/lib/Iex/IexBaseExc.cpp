@@ -348,21 +348,23 @@ DEFINE_EXC_EXP_IMPL (IEX_EXPORT, InvalidFpOpExc, MathExc)
 
 /// @endcond Doxygen_Suppress
 
-IEX_INTERNAL_NAMESPACE_SOURCE_EXIT
-
 #ifdef _WIN32
 
 #    pragma optimize("", off)
 void
 iex_debugTrap ()
 {
-    if (0 != getenv ("IEXDEBUGTHROW")) ::DebugBreak ();
+    if (0 != getenv ("IEXDEBUGTHROW"))
+       ::DebugBreak();
 }
 #else
 void
 iex_debugTrap ()
 {
     // how to in Linux?
-    if (0 != ::getenv ("IEXDEBUGTHROW")) __builtin_trap ();
+    if (0 != ::getenv ("IEXDEBUGTHROW"))
+       __builtin_trap();
 }
 #endif
+
+IEX_INTERNAL_NAMESPACE_SOURCE_EXIT
